@@ -57,7 +57,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 }
 
   def skipWeb() = Action { implicit request: Request[AnyContent] =>
-    controller.skip()
+    controller.doAndNotify(controller.skip)
     Ok(views.html.gameView(controller.toString, " "))
   }
 
