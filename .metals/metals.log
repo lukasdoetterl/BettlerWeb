@@ -1,0 +1,94 @@
+2022.10.16 14:36:02 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\lukas\bettler-WEB\.metals\lsp.trace.json or C:\Users\lukas\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.10.16 14:36:03 INFO  logging to file C:\Users\lukas\bettler-WEB\.metals\metals.log
+2022.10.16 14:36:03 INFO  Started: Metals version 0.11.9 in workspace 'C:\Users\lukas\bettler-WEB' for client Visual Studio Code 1.72.0.
+2022.10.16 14:36:04 INFO  time: initialize in 1.39s
+2022.10.16 14:36:06 WARN  Build server is not auto-connectable.
+2022.10.16 14:36:06 WARN  no build tool detected in workspace 'C:\Users\lukas\bettler-WEB'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2022.10.16 14:36:06 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\build.sc
+2022.10.16 14:36:10 INFO  no build target found for C:\Users\lukas\bettler-WEB\bettler\build.sc. Using presentation compiler with project's scala-library version: 3.2.0
+2022.10.16 14:36:10 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\build.sbt
+2022.10.16 14:36:11 INFO  time: code lens generation in 1.52s
+2022.10.16 14:36:59 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\build.sbt
+2022.10.16 14:51:28 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\test\controllers\HomeControllerSpec.scala
+2022.10.16 14:51:43 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\project\plugins.sbt
+2022.10.16 14:55:57 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.16 15:02:10 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\build.sc
+2022.10.16 15:02:24 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.16 15:23:23 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\lukas\bettler-WEB\.metals\lsp.trace.json or C:\Users\lukas\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.10.16 15:23:24 INFO  logging to file C:\Users\lukas\bettler-WEB\.metals\metals.log
+2022.10.16 15:23:24 INFO  Started: Metals version 0.11.9 in workspace 'C:\Users\lukas\bettler-WEB' for client Visual Studio Code 1.72.0.
+2022.10.16 15:23:24 WARN  Can't instantiate JavaInteractiveSemanticdb (version: JdkVersion(8), jdkHome: C:\Program Files\Java\jre1.8.0_301, javac exists: false)
+2022.10.16 15:23:29 INFO  time: initialize in 5.66s
+2022.10.16 15:23:32 WARN  Build server is not auto-connectable.
+2022.10.16 15:23:32 WARN  no build tool detected in workspace 'C:\Users\lukas\bettler-WEB'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2022.10.16 15:23:32 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.16 15:23:37 INFO  no build target found for C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.2.0
+Okt 16, 2022 3:23:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMATION: Unsupported notification method: $/setTrace
+2022.10.16 15:23:43 INFO  time: code lens generation in 11s
+2022.10.16 15:23:43 INFO  time: code lens generation in 3.2s
+2022.10.16 15:23:43 INFO  time: code lens generation in 4.99s
+2022.10.16 15:27:00 INFO  shutting down Metals
+2022.10.16 15:30:00 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\lukas\bettler-WEB\.metals\lsp.trace.json or C:\Users\lukas\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.10.16 15:30:02 INFO  logging to file C:\Users\lukas\bettler-WEB\.metals\metals.log
+2022.10.16 15:30:02 INFO  Started: Metals version 0.11.9 in workspace 'C:\Users\lukas\bettler-WEB' for client Visual Studio Code 1.72.0.
+2022.10.16 15:30:04 INFO  time: initialize in 2.76s
+2022.10.16 15:30:07 WARN  Build server is not auto-connectable.
+2022.10.16 15:30:07 WARN  no build tool detected in workspace 'C:\Users\lukas\bettler-WEB'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2022.10.16 15:30:07 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.16 15:30:17 INFO  no build target found for C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.10.16 15:30:22 INFO  time: code lens generation in 10s
+2022.10.16 15:30:22 INFO  time: code lens generation in 5.46s
+2022.10.16 15:30:22 INFO  time: code lens generation in 14s
+2022.10.16 15:31:45 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.16 15:37:37 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.16 15:43:16 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 12:57:33 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\lukas\bettler-WEB\.metals\lsp.trace.json or C:\Users\lukas\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.10.17 12:57:34 INFO  logging to file C:\Users\lukas\bettler-WEB\.metals\metals.log
+2022.10.17 12:57:34 INFO  Started: Metals version 0.11.9 in workspace 'C:\Users\lukas\bettler-WEB' for client Visual Studio Code 1.72.0.
+2022.10.17 12:57:41 INFO  time: initialize in 6.71s
+2022.10.17 12:57:45 WARN  Build server is not auto-connectable.
+2022.10.17 12:57:45 WARN  no build tool detected in workspace 'C:\Users\lukas\bettler-WEB'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2022.10.17 12:57:45 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 12:57:55 INFO  no build target found for C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.10.17 12:58:05 INFO  time: code lens generation in 19s
+Exception in thread "pool-3-thread-1" java.lang.InterruptedException
+	at scala.meta.internal.metals.FutureCancelToken.checkCanceled(FutureCancelToken.scala:29)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:195)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2022.10.17 13:19:19 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+Okt. 17, 2022 1:19:25 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2022.10.17 13:21:38 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:22:49 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:22:50 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:23:07 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:24:15 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:29:49 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:30:04 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:30:34 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:36:52 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:37:37 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:37:57 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:38:21 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:38:49 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:40:02 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:40:21 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:44:28 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:44:36 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:45:34 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:47:29 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:47:47 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 13:56:39 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 14:07:29 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\build.sbt
+2022.10.17 14:07:53 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\build.sbt
+2022.10.17 14:09:10 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 14:17:31 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 14:18:01 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 14:19:21 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 14:19:21 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 14:20:30 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 14:21:09 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
