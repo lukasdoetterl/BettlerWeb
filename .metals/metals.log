@@ -92,3 +92,56 @@ INFO: Unsupported notification method: $/setTrace
 2022.10.17 14:19:21 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
 2022.10.17 14:20:30 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
 2022.10.17 14:21:09 WARN  no build target for: C:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+2022.10.17 15:29:20 INFO  shutting down Metals
+2022.10.17 16:20:54 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\lukas\bettler-WEB\.metals\lsp.trace.json or C:\Users\lukas\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.10.17 16:20:55 INFO  logging to file C:\Users\lukas\bettler-WEB\.metals\metals.log
+2022.10.17 16:20:55 INFO  Started: Metals version 0.11.9 in workspace 'C:\Users\lukas\bettler-WEB' for client Visual Studio Code 1.72.2.
+2022.10.17 16:20:57 INFO  time: initialize in 1.85s
+Okt. 17, 2022 4:20:57 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "uri": "file:///c%3A/Users/lukas/bettler-WEB/bettler/app/controllers/HomeController.scala",
+      "languageId": "scala",
+      "version": 1,
+      "text": "package controllers\r\n\r\nimport controller.ControllerComponents\r\nimport play.api.mvc._\r\n\r\nimport javax.inject._\r\n\r\n\r\n\r\n/**\r\n * This controller creates an `Action` to handle HTTP requests to the\r\n * application\u0027s home page.\r\n */\r\n@Singleton\r\nclass HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {\r\n\r\n  /**\r\n   * Create an Action to render an HTML page.\r\n   *\r\n   * The configuration in the `routes` file means that this method\r\n   * will be called when the application receives a `GET` request with\r\n   * a path of `/`.\r\n   */\r\n\r\n\r\n  val controller \u003d new starter().controller_return\r\n\r\n\r\n  def index() \u003d Action { implicit request: Request[AnyContent] \u003d\u003e\r\n    Ok(views.html.index())\r\n  }\r\n  def about() \u003d Action { implicit request: Request[AnyContent] \u003d\u003e\r\n    Ok(views.html.about())\r\n  }\r\n\r\n}\r\n"
+    }
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.nio.file.NoSuchFileException: c:\Users\lukas\bettler-WEB\bettler\app\controllers\HomeController.scala
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:235)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:375)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:426)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3272)
+	at scala.meta.internal.io.PlatformFileIO$.slurp(PlatformFileIO.scala:45)
+	at scala.meta.internal.io.FileIO$.slurp(FileIO.scala:24)
+	at scala.meta.internal.metals.MetalsLanguageServer.didOpen(MetalsLanguageServer.scala:1085)
+	... 16 more
+
+2022.10.17 16:20:59 WARN  Build server is not auto-connectable.
+2022.10.17 16:21:00 INFO  shutting down Metals
