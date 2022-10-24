@@ -1,0 +1,71 @@
+@import views.html.helper.input
+@(board : String,player1 : String,player2 : String,message : String )
+
+
+
+@main("Hier wird getestet"){
+    <h3 class="center" id="demo">
+        @player1
+        <br>
+        @board
+        <br>
+        @player2
+        <br>
+        @message
+        <br>
+
+        <p><form action="@routes.HomeController.create_better_game()"><button>Neues Spiel starten</button></form></p>
+        </h3>
+
+            @for(button1 <- player1.split(" ")) {
+
+            <form action="@routes.HomeController.playCardBetter(button1)"><button>@button1</button></form>
+        }
+        <br>
+             @for(button2 <- player2.split(" ")) {
+
+            <form action="@routes.HomeController.playCardBetter(button2)"><button>@button2</button></form>
+        }
+
+
+
+
+        <br>
+
+    <label for="cardSelected">Wich Cards?(More than one Sperated by a Space): </label>
+    <input type="text" id="cardSelected">
+    <button id="playSelected" onclick="playSelectedCards()">play selected Cards</button><br>
+
+    <input placeholder="Cards to play" id="cards" onkeydown="playCards(this.value)">
+    <script>
+            function playCards(cards) {
+                if (this.event.key === "Enter") {
+                    fetch(`http://localhost:9000/playCards/:card  ?cards=${cards}`, {
+                        method: "POST",
+                        body: ""
+                    }).then(res => {
+                        if(res.redirected) {
+                            window.location.replace(res.url)
+                        } else {
+                            window.location.replace(`http://localhost:9000/playCards/:card  ?cards=${cards});
+                        }
+                    });
+                }
+            }
+
+    </script>
+    <script>
+
+    </script>
+
+
+
+
+    }
+
+
+
+
+
+
+

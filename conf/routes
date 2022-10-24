@@ -11,11 +11,15 @@ GET     /                           controllers.HomeController.index()
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 GET     /start                      controllers.HomeController.create_game()
 
-GET     /play/:cards            controllers.HomeController.playWeb(cards:String)
-GET     /skip                   controllers.HomeController.skipWeb()
-GET     /undo                   controllers.HomeController.undo()
-GET     /redo                   controllers.HomeController.redo()
-GET     /about                  controllers.HomeController.about()
+GET     /play/:cards                    controllers.HomeController.playWeb(cards:String)
+GET     /skip                           controllers.HomeController.skipWeb()
+GET     /undo                           controllers.HomeController.undo()
+GET     /redo                           controllers.HomeController.redo()
+GET     /about                          controllers.HomeController.about()
+GET     /b                              controllers.HomeController.create_better_game()
+GET     /playCardBetter/:cards          controllers.HomeController.playCardBetter(cards:String)
+
+POST    /playCards/:card                      controllers.HomeController.playCardBetter(card:String)
 
 
 

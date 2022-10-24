@@ -7,9 +7,15 @@ import de.htwg.se.bettler.starter
 import de.htwg.se.bettler.model.cardComponent.{CardInterface, CardsInterface}
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Cards
+import de.htwg.se.bettler.model.cardComponent.cardBaseImpl._
 import de.htwg.se.bettler.controller.controllerBaseImp
+import de.htwg.se.bettler.model.Field
+import de.htwg.se.bettler.model.gameComponent.Game
+import de.htwg.se.bettler.model.gameComponent.pvpGameImpl.PvPGame
+import de.htwg.se.bettler.model.stateComponent.GameStateContext
+import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.PlayerTurnState
 
-import scala.util.{Try,Success,Failure}
+import scala.util.{Failure, Success, Try}
 
 
 
@@ -34,6 +40,18 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   val controller = new starter().controller_return
 
 
+  def matchCards(cardinput: String): Set[CardInterface] = {
+    val s = cardinput.split(" ")
+    var l = Set.empty[CardInterface]
+    for (i <- 0 to s.size - 1)
+      Card(s(i)) match {
+        case Success(c) => l = l + c
+        case Failure(f) => println("fail")
+      }
+    return l
+  }
+
+
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
 
@@ -45,13 +63,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
   def playWeb(cardsinput: String) = Action { implicit request: Request[AnyContent] =>
-    val s = cardsinput.split(" ")
-    var l = Set.empty[CardInterface]
-    for (i <- 0 to s.size - 1)
-      Card(s(i)) match {
-        case Success(c) => l = l + c
-        case Failure(f) => println("fail")
-      }
+    val l = matchCards(cardsinput)
 
     controller.doAndNotify(controller.play(_), (Cards(l)))
     Ok(views.html.gameView(controller.toString, " "))
@@ -76,7 +88,55 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.about())
   }
 
+  def playCardBetter(cards: String) = Action {
+
+    val l = matchCards(cards)
+    controller.doAndNotify(controller.play(_), (Cards(l)))
+
+    val game = controller.game.get
+    val board = game.getBoard().toString
 
 
+    val player1 = game.getPlayers()(0).toString
+    val player2 = game.getPlayers()(1).toString
+    val p1 = playerformatter(player1)
+    val p2 = playerformatter(player2)
 
+
+    val message = game.getMessage()
+    Ok(views.html.bettergameView(board, p1, p2, message))
+
+  }
+
+  def create_better_game = Action {
+    controller.newGame("pvp")
+
+    val game = controller.game.get
+    val board = game.getBoard().toString
+    val player1 = game.getPlayers()(0).toString()
+    val player2 = game.getPlayers()(1).toString()
+    val message = game.getMessage()
+    val p1 = playerformatter(player1)
+    val p2 = playerformatter(player2)
+
+
+    Ok(views.html.bettergameView(board, p1, p2, message))
+
+  }
+
+
+  def playerformatter(cards: String): String = {
+    var i = 0
+    var p = ""
+
+    while (i <= cards.length() -2) {
+      p += cards(i)
+      p += cards(i + 1)
+      p += " "
+      i = i + 2
+    }
+    return p
+
+
+  }
 }
