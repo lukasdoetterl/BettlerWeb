@@ -3,45 +3,150 @@
 
 
 
-@main("Hier wird getestet"){
-        <h1>Player 1 : </h1> <br>
-        @player1
-        <br>
-        <h2>Board: </h2> <br>
-        @board
-        <br>
-        <h3>Player 2 : </h3> <br>
-        @player2
-        <br>
-        <h4>Player 2 : </h4> <br>
-        @message
-        <br>
+        @main("Bettler"){
 
-        <form action="@routes.HomeController.create_better_game()"><button>Neues Spiel starten</button></form>
-        <br>
-        <form action="@routes.HomeController.betterSkip()"><button>Skip</button></form>
-        <form action="@routes.HomeController.betterundo()"><button>undo</button></form>
-        <form action="@routes.HomeController.betterredo()"><button>redo</button></form>
-            @for(button1 <- player1.split(" ")) {
+                <style>
 
-            <form action="@routes.HomeController.playCardBetter(button1)"><button>@button1</button></form>
+                        .player_1 {
+                                text-align: center;
+
+                        }
+                        .player_2 {
+                                text-align: center;
+                        }
+                        .board {
+                                text-align: center;
+                        }
+                        .turn{
+                                text-align: center;
+                        }
+                        .start{
+                                display:flex;
+                                flex-direction:row;
+                                align-items:center;
+                                padding: 10px;
+                        }
+                        .buttons{
+                                display:flex;
+                                flex-direction:row;
+                                align-items:center;
+                                padding-top: 30px;
+                                padding-bottom: 30px;
+                                padding-left: 370px;
+                        }
+                        .hand_1{
+                                display:flex;
+                                flex-direction:row;
+                                align-items:center;
+                                padding: 10px;
+                        }
+                        .hand_2{
+                                display:flex;
+                                flex-direction:row;
+                                align-items:center;
+                                padding: 10px;
+                        }
+                        .body{
+                                border: 10px;
+                                border-style: solid;
+                                background: #FFFF;
+                                margin: auto;
+                                width: 50%;
+                                padding: 10px;
+                        }
+                        body{
+                                background-image: url("https://i.postimg.cc/FscmwHst/background.png");
+                                -webkit-background-size: cover;
+                                -moz-background-size: cover;
+                                -o-background-size: cover;
+                                background-size: cover;
+                        }
+                        button{
+                                display: inline-block;
+                                width: 100px;
+                                height: 60px;
+                                line-height: 30px;
+                                background: #4169e1;
+                                margin: 0 4px;
+                                text-align: center;
+                        }
+
+
+
+                </style>
+
+
+
+
+
+                <head>
+                </head>
+
+                <body>
+                        <div class = "body">
+                                <div class = "player_1">
+                                        <h2>Player 1: </h2> <br>
+                                @player1
+                                </div>
+                                <br>
+                                <div class = "board">
+                                        <h2>Board: </h2> <br>
+                                @board
+                                </div>
+                                <br>
+                                <div class = "player_2">
+                                        <h2>Player 2: </h2> <br>
+                                @player2
+                                </div>
+                                <br>
+                                <div class = "turn">
+                                        <h3>Turn: </h3>
+                                        @message
+                                        <br>
+                                </div>
+                                <br>
+
+                                <div class = "start">
+                                        <form action="@routes.HomeController.create_better_game()"><button>Neues Spiel starten</button></form>
+                                        <br>
+                                </div>
+
+                                <div class = "buttons">
+
+                                        <form action="@routes.HomeController.betterSkip()"><button>Skip</button></form>
+                                        <form action="@routes.HomeController.betterundo()"><button>undo</button></form>
+                                        <form action="@routes.HomeController.betterredo()"><button>redo</button></form>
+
+                                </div>
+
+                                <div class = "hand_1">
+
+                                @for(button1 <- player1.split(" ")) {
+
+                                        <form action="@routes.HomeController.playCardBetter(button1)"><button>@button1</button></form>
+                                }
+                                </div>
+
+                                <br>
+
+                                <div class = "hand_2">
+
+                                @for(button2 <- player2.split(" ")) {
+
+                                        <form action="@routes.HomeController.playCardBetter(button2)"><button>@button2</button></form>
+                                }
+                                </div>
+
+                                <br>
+                        </div>
+                </body>
+
+
+
+
+
+
         }
-        <br>
-             @for(button2 <- player2.split(" ")) {
-
-            <form action="@routes.HomeController.playCardBetter(button2)"><button>@button2</button></form>
-        }
-
-        <br>
-
-
-
-
-
-
-
-    }
-
 
 
 
