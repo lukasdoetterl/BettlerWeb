@@ -43,6 +43,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     controller.newGame("pvp")
     Ok(views.html.gameView(controller.toString, ""))
   }
+
   def playWeb(cardsinput: String) = Action { implicit request: Request[AnyContent] =>
     val s = cardsinput.split(" ")
     var l = Set.empty[CardInterface]
@@ -52,9 +53,9 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
         case Failure(f) => println("fail")
       }
 
-    controller.doAndNotify(controller.play(_),(Cards(l)))
-    Ok(views.html.gameView(controller.toString," "))
-}
+    controller.doAndNotify(controller.play(_), (Cards(l)))
+    Ok(views.html.gameView(controller.toString, " "))
+  }
 
   def skipWeb() = Action { implicit request: Request[AnyContent] =>
     controller.doAndNotify(controller.skip)
@@ -70,4 +71,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     controller.redo
     Ok(views.html.gameView(controller.toString, " "))
   }
+
+  def about = Action {
+    Ok(views.html.about())
+  }
+
+
+
+
 }

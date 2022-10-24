@@ -1,5 +1,8 @@
 @()
 
-@main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+@main("Bettler") {
+  <h1>Welcome to Bettler</h1>
+  <p><form action="@routes.HomeController.create_game()"><button>Direkt START</button></form></p>
+  <p><form action="@routes.HomeController.about()"><button>About(Regeln und Impressum)</button></form></p>
+  <p><form action="@routes.HomeController.create_game()"><button>Links</button></form></p>
 }
