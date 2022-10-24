@@ -4,19 +4,24 @@
 
 
 @main("Hier wird getestet"){
-    <h3 class="center" id="demo">
+        <h1>Player 1 : </h1> <br>
         @player1
         <br>
+        <h2>Board: </h2> <br>
         @board
         <br>
+        <h3>Player 2 : </h3> <br>
         @player2
         <br>
+        <h4>Player 2 : </h4> <br>
         @message
         <br>
 
-        <p><form action="@routes.HomeController.create_better_game()"><button>Neues Spiel starten</button></form></p>
-        </h3>
-
+        <form action="@routes.HomeController.create_better_game()"><button>Neues Spiel starten</button></form>
+        <br>
+        <form action="@routes.HomeController.betterSkip()"><button>Skip</button></form>
+        <form action="@routes.HomeController.betterundo()"><button>undo</button></form>
+        <form action="@routes.HomeController.betterredo()"><button>redo</button></form>
             @for(button1 <- player1.split(" ")) {
 
             <form action="@routes.HomeController.playCardBetter(button1)"><button>@button1</button></form>
@@ -27,36 +32,10 @@
             <form action="@routes.HomeController.playCardBetter(button2)"><button>@button2</button></form>
         }
 
-
-
-
         <br>
 
-    <label for="cardSelected">Wich Cards?(More than one Sperated by a Space): </label>
-    <input type="text" id="cardSelected">
-    <button id="playSelected" onclick="playSelectedCards()">play selected Cards</button><br>
 
-    <input placeholder="Cards to play" id="cards" onkeydown="playCards(this.value)">
-    <script>
-            function playCards(cards) {
-                if (this.event.key === "Enter") {
-                    fetch(`http://localhost:9000/playCards/:card  ?cards=${cards}`, {
-                        method: "POST",
-                        body: ""
-                    }).then(res => {
-                        if(res.redirected) {
-                            window.location.replace(res.url)
-                        } else {
-                            window.location.replace(`http://localhost:9000/playCards/:card  ?cards=${cards});
-                        }
-                    });
-                }
-            }
 
-    </script>
-    <script>
-
-    </script>
 
 
 

@@ -7,9 +7,12 @@ import de.htwg.se.bettler.starter
 import de.htwg.se.bettler.model.cardComponent.{CardInterface, CardsInterface}
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Cards
+import de.htwg.se.bettler.model.cardComponent._
+
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl._
 import de.htwg.se.bettler.controller.controllerBaseImp
-import de.htwg.se.bettler.model.Field
+import de.htwg.se.bettler.model.Field._
+import de.htwg.se.bettler.model.{cardComponent, gameComponent}
 import de.htwg.se.bettler.model.gameComponent.Game
 import de.htwg.se.bettler.model.gameComponent.pvpGameImpl.PvPGame
 import de.htwg.se.bettler.model.stateComponent.GameStateContext
@@ -109,12 +112,13 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
   def create_better_game = Action {
-    controller.newGame("pvp")
+    controller.doAndNotify(controller.newGame(_), "pvp")
+
 
     val game = controller.game.get
     val board = game.getBoard().toString
-    val player1 = game.getPlayers()(0).toString()
-    val player2 = game.getPlayers()(1).toString()
+    val player1 = game.getPlayers()(0).toString
+    val player2 = game.getPlayers()(1).toString
     val message = game.getMessage()
     val p1 = playerformatter(player1)
     val p2 = playerformatter(player2)
@@ -125,16 +129,68 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
 
+  def betterSkip() = Action { implicit request: Request[AnyContent] =>
+    controller.doAndNotify(controller.skip)
+    val game = controller.game.get
+    val board = game.getBoard().toString
+
+    val player1 = game.getPlayers()(0).toString
+    val player2 = game.getPlayers()(1).toString
+    val p1 = playerformatter(player1)
+    val p2 = playerformatter(player2)
+    val message = game.getMessage()
+    Ok(views.html.bettergameView(board, p1, p2, message))
+  }
+
+
+  def betterundo() = Action { implicit request: Request[AnyContent] =>
+    controller.undo
+    val game = controller.game.get
+    val board = game.getBoard().toString
+
+    val player1 = game.getPlayers()(0).toString
+    val player2 = game.getPlayers()(1).toString
+    val p1 = playerformatter(player1)
+    val p2 = playerformatter(player2)
+    val message = game.getMessage()
+    Ok(views.html.bettergameView(board, p1, p2, message))
+
+  }
+
+  def betterredo() = Action { implicit request: Request[AnyContent] =>
+    controller.redo
+    val game = controller.game.get
+    val board = game.getBoard().toString
+
+    val player1 = game.getPlayers()(0).toString
+    val player2 = game.getPlayers()(1).toString
+    val p1 = playerformatter(player1)
+    val p2 = playerformatter(player2)
+    val message = game.getMessage()
+    Ok(views.html.bettergameView(board, p1, p2, message))
+  }
+
+
   def playerformatter(cards: String): String = {
     var i = 0
     var p = ""
 
-    while (i <= cards.length() -2) {
+    while (i <= cards.length() - 2) {
+
       p += cards(i)
       p += cards(i + 1)
-      p += " "
-      i = i + 2
-    }
+      if (cards(i+1).toString.equals("1")) {
+        p += cards(i + 2)
+        p += " "
+        i = i + 3
+      }
+      else {
+        p += " "
+        i = i + 2
+      }
+
+
+      }
     return p
 
 

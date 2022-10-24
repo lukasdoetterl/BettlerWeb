@@ -9,15 +9,20 @@ GET     /                           controllers.HomeController.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-GET     /start                      controllers.HomeController.create_game()
+GET     /start                      controllers.HomeController.create_better_game()
 
 GET     /play/:cards                    controllers.HomeController.playWeb(cards:String)
 GET     /skip                           controllers.HomeController.skipWeb()
 GET     /undo                           controllers.HomeController.undo()
 GET     /redo                           controllers.HomeController.redo()
 GET     /about                          controllers.HomeController.about()
+
+#betterVersion
 GET     /b                              controllers.HomeController.create_better_game()
 GET     /playCardBetter/:cards          controllers.HomeController.playCardBetter(cards:String)
+GET     /betterskip                     controllers.HomeController.betterSkip()
+GET     /betterundo                     controllers.HomeController.betterundo()
+GET     /betterredo                     controllers.HomeController.betterredo()
 
 POST    /playCards/:card                      controllers.HomeController.playCardBetter(card:String)
 
