@@ -183,6 +183,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
         p += cards(i + 2)
         p += " "
         i = i + 3
+
       }
       else {
         p += " "
