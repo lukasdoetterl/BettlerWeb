@@ -123,7 +123,7 @@
 
                                 @for(button1 <- player1.split(" ")) {
 
-                                        <form action="@routes.HomeController.playCardBetter(button1)"><button>@button1</button></form>
+                                        <button onclick="addCard('@button1')";>@button1</button>
                                 }
                                 </div>
 
@@ -133,13 +133,18 @@
 
                                 @for(button2 <- player2.split(" ")) {
 
-                                        <form action="@routes.HomeController.playCardBetter(button2)"><button>@button2</button></form>
+                                        <button onclick="addCard('@button2')";>@button2</button>
+
                                 }
                                 </div>
 
                                 <br>
+                                <input type="text" id="selectedCards" name="selectedCards" value=""><br><br>
+                                <button onclick="playSelectedCards()">Play Cards</button>
+                                <button onclick="nextRound()">Next Round</button>
                         </div>
                 </body>
+
 
 
 

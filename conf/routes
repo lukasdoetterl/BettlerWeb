@@ -23,6 +23,7 @@ GET     /playCardBetter/:cards          controllers.HomeController.playCardBette
 GET     /betterskip                     controllers.HomeController.betterSkip()
 GET     /betterundo                     controllers.HomeController.betterundo()
 GET     /betterredo                     controllers.HomeController.betterredo()
+GET     /nextround                      controllers.HomeController.nextRound()
 
 POST    /playCards/:card                      controllers.HomeController.playCardBetter(card:String)
 

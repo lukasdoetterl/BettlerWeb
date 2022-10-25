@@ -116,7 +116,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
 
     val game = controller.game.get
-    val board = game.getBoard().toString
+    val board = playerformatter(game.getBoard().toString)
     val player1 = game.getPlayers()(0).toString
     val player2 = game.getPlayers()(1).toString
     val message = game.getMessage()
@@ -132,7 +132,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   def betterSkip() = Action { implicit request: Request[AnyContent] =>
     controller.doAndNotify(controller.skip)
     val game = controller.game.get
-    val board = game.getBoard().toString
+    val board = playerformatter(game.getBoard().toString)
 
     val player1 = game.getPlayers()(0).toString
     val player2 = game.getPlayers()(1).toString
@@ -146,7 +146,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   def betterundo() = Action { implicit request: Request[AnyContent] =>
     controller.undo
     val game = controller.game.get
-    val board = game.getBoard().toString
+    val board = playerformatter(game.getBoard().toString)
 
     val player1 = game.getPlayers()(0).toString
     val player2 = game.getPlayers()(1).toString
@@ -160,7 +160,20 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   def betterredo() = Action { implicit request: Request[AnyContent] =>
     controller.redo
     val game = controller.game.get
-    val board = game.getBoard().toString
+    val board = playerformatter(game.getBoard().toString)
+
+    val player1 = game.getPlayers()(0).toString
+    val player2 = game.getPlayers()(1).toString
+    val p1 = playerformatter(player1)
+    val p2 = playerformatter(player2)
+    val message = game.getMessage()
+    Ok(views.html.bettergameView(board, p1, p2, message))
+  }
+
+  def nextRound() = Action { implicit request: Request[AnyContent] =>
+    controller.doAndNotify(controller.nextRound)
+    val game = controller.game.get
+    val board = playerformatter(game.getBoard().toString)
 
     val player1 = game.getPlayers()(0).toString
     val player2 = game.getPlayers()(1).toString
