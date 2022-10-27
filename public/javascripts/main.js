@@ -6,6 +6,10 @@
             selectedCards = selectedCards + " " + card
             document.getElementById("selectedCards").value = selectedCards
         }
+        else {
+            selectedCards = selectedCards.replace(card, "")
+            document.getElementById("selectedCards").value = selectedCards
+        }
     }
 
 

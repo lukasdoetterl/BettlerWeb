@@ -8,7 +8,6 @@ import de.htwg.se.bettler.model.cardComponent.{CardInterface, CardsInterface}
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Cards
 import de.htwg.se.bettler.model.cardComponent._
-
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl._
 import de.htwg.se.bettler.controller.controllerBaseImp
 import de.htwg.se.bettler.model.Field._
@@ -17,7 +16,9 @@ import de.htwg.se.bettler.model.gameComponent.Game
 import de.htwg.se.bettler.model.gameComponent.pvpGameImpl.PvPGame
 import de.htwg.se.bettler.model.stateComponent.GameStateContext
 import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.PlayerTurnState
+import play.libs.Scala
 
+import scala.reflect.io.File
 import scala.util.{Failure, Success, Try}
 
 
@@ -53,6 +54,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       }
     return l
   }
+
+
 
 
   def index() = Action { implicit request: Request[AnyContent] =>
@@ -97,7 +100,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     controller.doAndNotify(controller.play(_), (Cards(l)))
 
     val game = controller.game.get
-    val board = game.getBoard().toString
+    val board = playerformatter(game.getBoard().toString)
 
 
     val player1 = game.getPlayers()(0).toString

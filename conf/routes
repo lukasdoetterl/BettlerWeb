@@ -25,6 +25,9 @@ GET     /betterundo                     controllers.HomeController.betterundo()
 GET     /betterredo                     controllers.HomeController.betterredo()
 GET     /nextround                      controllers.HomeController.nextRound()
 
+#Picture Path
+GET     /cardpictures/*file               controllers.Assets.at(path="/public/", file)
+
 POST    /playCards/:card                      controllers.HomeController.playCardBetter(card:String)
 
 

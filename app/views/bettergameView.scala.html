@@ -1,5 +1,9 @@
 @import views.html.helper.input
+@import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
+@import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
 @(board : String,player1 : String,player2 : String,message : String )
+@cmethods = @{Card}
+
 
 
 
@@ -41,6 +45,12 @@
                                 padding: 10px;
                         }
                         .hand_2{
+                                display:flex;
+                                flex-direction:row;
+                                align-items:center;
+                                padding: 10px;
+                        }
+                        .board_pics{
                                 display:flex;
                                 flex-direction:row;
                                 align-items:center;
@@ -123,17 +133,31 @@
 
                                 @for(button1 <- player1.split(" ")) {
 
-                                        <button onclick="addCard('@button1')";>@button1</button>
+                                       <!-- <button onclick="addCard('@button1')";>@button1</button> -->
+                                        <input type="image" img src="@routes.Assets.versioned("images/"+button1 +".png")"onclick="addCard('@button1')" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                        
+
                                 }
                                 </div>
+                                <div class = "board_pics">
+                                @if(!board.equals("")){
+                                        @for(board <- board.split(" ")) {
 
+
+                                                <input type="image" img src="@routes.Assets.versioned("images/"+board +".png")" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                                        }
+                                }
+
+                                </div>
                                 <br>
 
                                 <div class = "hand_2">
 
                                 @for(button2 <- player2.split(" ")) {
+                                        <!-- <button onclick="addCard('@button2')" ;>@button2</button> -->
 
-                                        <button onclick="addCard('@button2')";>@button2</button>
+                                        <input type="image" img src="@routes.Assets.versioned("images/"+button2 +".png")"onclick="addCard('@button2')" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
                                 }
                                 </div>
