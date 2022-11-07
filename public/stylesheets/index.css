@@ -1,0 +1,30 @@
+
+.img-size img {
+    width: 450px;
+    height: 150px;
+}
+button {
+    padding: 5px;
+    background: #FFFF;
+    border: 0;
+}
+.body {
+    border: 10px;
+    border-style: solid;
+    background: #FFFF;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.alfred {
+    padding-left: 910px;
+    position: absolute;
+}
+
+body {
+    background-image: url("https://i.postimg.cc/FscmwHst/background.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

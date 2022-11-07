@@ -2,7 +2,7 @@
 @(gameData: betterGameData )
 
 <head>
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/game.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/game.css")">
 </head>
 
 
@@ -10,11 +10,7 @@
 
         @main("Bettler"){
 
-                <head>
 
-                    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/game.css")">
-
-                </head>
 
                 <body>
                         <div class = "body">
@@ -24,8 +20,8 @@
                                         @gameData.message
                                         <br>
                                 </div>
-                                <div class = "turn">
-                                        <h3>Turn: </h3>
+                                <div class = "output">
+
                                         @gameData.currentTurn
                                         <br>
                                 </div>
@@ -36,7 +32,7 @@
                                         <br>
                                 </div>
 
-                                <div class = "buttons_game">
+                                <div class = "game_buttons">
 
                                         <form action="@routes.HomeController.betterSkip()"><button>Skip</button></form>
                                         <form action="@routes.HomeController.betterundo()"><button>undo</button></form>
@@ -73,7 +69,7 @@
 
 
                                 <br>
-                                <input type="text"  id="selectedCards" name="selectedCards" value=""><br><br>
+
                                 <button onclick="playSelectedCards()">Play Cards</button>
                                 <button onclick="nextRound()">Next Round</button>
                                 <button onclick="backToLobby()">Exit</button>

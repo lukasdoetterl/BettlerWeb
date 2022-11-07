@@ -8,7 +8,7 @@
     if (currentTurn == asker){
         if (!selectedCards.includes(card)){
             selectedCards = selectedCards + " " + card
-            document.getElementById("selectedCards").value = selectedCards
+
             var theImg = document.getElementById(card);
             theImg.height = theImg.height + sizechangeheight;
             theImg.width = theImg.width + sizechangewidth;
@@ -20,7 +20,7 @@
                 selectedCards = selectedCards.replace(" ", "")
             }
 
-            document.getElementById("selectedCards").value = selectedCards
+
             var theImg = document.getElementById(card);
             theImg.height = theImg.height - sizechangeheight;
             theImg.width = theImg.width - sizechangewidth;
@@ -29,12 +29,7 @@
 
     }
 
-    function makeButtonsPink(){
-        var buttons = document.getElementsByClassName("button");
-        for (var i = 0; i < buttons.length; i++) {
-            buttons[i].style.backgroundColor = "#ff00ff";
-        }
-    }
+
 
 
     function playSelectedCards() {
@@ -42,16 +37,12 @@
             window.location.href = "/playCardBetter/" + selectedCards;
         }
 
+    }
+
     function backToLobby() {
-        window.location.href = "/lobbyt5"
+        window.location.href = "/lobby"
     }
 
-
-
-
-
-
-    }
     function nextRound(){
         window.location.href = "/nextround"
     }

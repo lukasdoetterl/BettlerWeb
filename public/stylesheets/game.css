@@ -13,19 +13,32 @@
 .turn{
     text-align: center;
 }
+
+
+.output {
+    position: absolute;
+    width: 3.5em;
+    height: 2em;
+    right: 50em;
+    text-align: center;
+    font-size: 15px;
+
+    color: white;
+    background-image: linear-gradient(royalblue,royalblue);
+    border-radius: 1em;
+    padding:1em 0.5em;
+    display: inline-block;
+}
 .start{
     display:flex;
     flex-direction:row;
     align-items:center;
-    padding: 10px;
 }
-.buttons{
+
+.game_buttons{
     display:flex;
     flex-direction:row;
-    align-items:center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-left: 370px;
+
 }
 .hand_1{
     display:flex;
@@ -60,13 +73,14 @@ body{
     -o-background-size: cover;
     background-size: cover;
 }
-button_game{
+button{
     display: inline-block;
     width: 100px;
     height: 60px;
     line-height: 30px;
-    background: #4169e1;
+    background-image: linear-gradient(160deg, white,red 10%, royalblue );
     margin: 0 4px;
+    border-radius: 1em;
     text-align: center;
 }
 #ziel {
@@ -77,37 +91,6 @@ button_game{
 }
 
 
-
- .img-size img {
-     width: 450px;
-     height: 150px;
-
- }
-button {
-    padding: 5px;
-    background: #FFFF;
-    border: 0;
-}
-.body {
-    border: 10px;
-    border-style: solid;
-    background: #FFFF;
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-.alfred {
-    padding-left: 910px;
-    position: absolute;
-}
-
-body {
-    background-image: url("https://i.postimg.cc/FscmwHst/background.png");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
 
 
