@@ -60,7 +60,7 @@ body{
     -o-background-size: cover;
     background-size: cover;
 }
-button{
+button_game{
     display: inline-block;
     width: 100px;
     height: 60px;
@@ -83,7 +83,7 @@ button{
      height: 150px;
 
  }
-.button2 {
+button {
     padding: 5px;
     background: #FFFF;
     border: 0;

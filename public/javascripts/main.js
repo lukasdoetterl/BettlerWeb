@@ -29,6 +29,12 @@
 
     }
 
+    function makeButtonsPink(){
+        var buttons = document.getElementsByClassName("button");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].style.backgroundColor = "#ff00ff";
+        }
+    }
 
 
     function playSelectedCards() {

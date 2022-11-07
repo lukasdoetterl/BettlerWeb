@@ -36,7 +36,7 @@
                                         <br>
                                 </div>
 
-                                <div class = "buttons">
+                                <div class = "buttons_game">
 
                                         <form action="@routes.HomeController.betterSkip()"><button>Skip</button></form>
                                         <form action="@routes.HomeController.betterundo()"><button>undo</button></form>
@@ -78,11 +78,7 @@
                                 <button onclick="nextRound()">Next Round</button>
                                 <button onclick="backToLobby()">Exit</button>
 
-                                <script>
-                                        function backToLobby() {
-                                        window.location.href = "/lobby"
-                                }
-                                </script>
+
                         </div>
                 </body>
 
