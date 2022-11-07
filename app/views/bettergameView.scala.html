@@ -1,117 +1,32 @@
-@import views.html.helper.input
-@import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
-@import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
-@(board : String,player1 : String,player2 : String,message : String )
-@cmethods = @{Card}
+
+@(gameData: betterGameData )
+
+<head>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/game.css")">
+</head>
 
 
 
 
         @main("Bettler"){
 
-                <style>
-
-                        .player_1 {
-                                text-align: center;
-
-                        }
-                        .player_2 {
-                                text-align: center;
-                        }
-                        .board {
-                                text-align: center;
-                        }
-                        .turn{
-                                text-align: center;
-                        }
-                        .start{
-                                display:flex;
-                                flex-direction:row;
-                                align-items:center;
-                                padding: 10px;
-                        }
-                        .buttons{
-                                display:flex;
-                                flex-direction:row;
-                                align-items:center;
-                                padding-top: 30px;
-                                padding-bottom: 30px;
-                                padding-left: 370px;
-                        }
-                        .hand_1{
-                                display:flex;
-                                flex-direction:row;
-                                align-items:center;
-                                padding: 10px;
-                        }
-                        .hand_2{
-                                display:flex;
-                                flex-direction:row;
-                                align-items:center;
-                                padding: 10px;
-                        }
-                        .board_pics{
-                                display:flex;
-                                flex-direction:row;
-                                align-items:center;
-                                padding: 10px;
-                        }
-                        .body{
-                                border: 10px;
-                                border-style: solid;
-                                background: #FFFF;
-                                margin: auto;
-                                width: 50%;
-                                padding: 10px;
-                        }
-                        body{
-                                background-image: url("https://i.postimg.cc/FscmwHst/background.png");
-                                -webkit-background-size: cover;
-                                -moz-background-size: cover;
-                                -o-background-size: cover;
-                                background-size: cover;
-                        }
-                        button{
-                                display: inline-block;
-                                width: 100px;
-                                height: 60px;
-                                line-height: 30px;
-                                background: #4169e1;
-                                margin: 0 4px;
-                                text-align: center;
-                        }
-
-
-
-                </style>
-
-
-
-
-
                 <head>
+
+                    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/game.css")">
+
                 </head>
 
                 <body>
                         <div class = "body">
-                                <div class = "player_1">
-                                        <h2>Player 1: </h2> <br>
-                                @player1
+
+                                <div class = "turn">
+                                        <h3>Message: </h3>
+                                        @gameData.message
+                                        <br>
                                 </div>
-                                <br>
-                                <div class = "board">
-                                        <h2>Board: </h2> <br>
-                                @board
-                                </div>
-                                <br>
-                                <div class = "player_2">
-                                        <h2>Player 2: </h2> <br>
-                                @player2
-                                </div>
-                                <br>
                                 <div class = "turn">
                                         <h3>Turn: </h3>
-                                        @message
+                                        @gameData.currentTurn
                                         <br>
                                 </div>
                                 <br>
@@ -130,22 +45,17 @@
                                 </div>
 
                                 <div class = "hand_1">
-
-                                @for(button1 <- player1.split(" ")) {
-
-                                       <!-- <button onclick="addCard('@button1')";>@button1</button> -->
-                                        <input type="image" img src="@routes.Assets.versioned("images/"+button1 +".png")"onclick="addCard('@button1')" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                                        
-
+                                @if(gameData.player1 != ""){
+                                        @for(button1 <- gameData.player1.split(" ")) {
+                                                <input type="image" id="@button1" img src="@routes.Assets.versioned("images/"+button1 +".png")"onclick="addCard('@button1','@gameData.currentTurn',1)"draggable="false"  alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                        }
                                 }
+
                                 </div>
                                 <div class = "board_pics">
-                                @if(!board.equals("")){
-                                        @for(board <- board.split(" ")) {
-
-
-                                                <input type="image" img src="@routes.Assets.versioned("images/"+board +".png")" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
+                                @if(!gameData.board.equals("")){
+                                        @for(board <- gameData.board.split(" ")) {
+                                                <input type="image" draggable="false"  img src="@routes.Assets.versioned("images/"+board +".png")" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                         }
                                 }
 
@@ -153,22 +63,30 @@
                                 <br>
 
                                 <div class = "hand_2">
+                                @if(gameData.player2 != ""){
+                                @for(button2 <- gameData.player2.split(" ")) {
+                                        <input type="image" id="@button2" img src="@routes.Assets.versioned("images/"+button2 +".png")" draggable="false" onclick="addCard('@button2','@gameData.currentTurn',2)" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
-                                @for(button2 <- player2.split(" ")) {
-                                        <!-- <button onclick="addCard('@button2')" ;>@button2</button> -->
-
-                                        <input type="image" img src="@routes.Assets.versioned("images/"+button2 +".png")"onclick="addCard('@button2')" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
+                                }
                                 }
                                 </div>
 
+
                                 <br>
-                                <input type="text" id="selectedCards" name="selectedCards" value=""><br><br>
+                                <input type="text"  id="selectedCards" name="selectedCards" value=""><br><br>
                                 <button onclick="playSelectedCards()">Play Cards</button>
                                 <button onclick="nextRound()">Next Round</button>
+                                <button onclick="backToLobby()">Exit</button>
+
+                                <script>
+                                        function backToLobby() {
+                                        window.location.href = "/lobby"
+                                }
+                                </script>
                         </div>
                 </body>
 
+        
 
 
 

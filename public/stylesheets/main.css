@@ -1,0 +1,115 @@
+
+
+.player_1 {
+    text-align: center;
+
+}
+.player_2 {
+    text-align: center;
+}
+.board {
+    text-align: center;
+}
+.turn{
+    text-align: center;
+}
+.start{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: 10px;
+}
+.buttons{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 370px;
+}
+.hand_1{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: 10px;
+}
+.hand_2{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: 10px;
+}
+.board_pics{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: 10px;
+}
+.body{
+    border: 10px;
+    border-style: solid;
+    background: #FFFF;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+body{
+    background-image: url("https://i.postimg.cc/FscmwHst/background.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+button{
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+    line-height: 30px;
+    background: #4169e1;
+    margin: 0 4px;
+    text-align: center;
+}
+#ziel {
+    width: 20em;
+    height: 6em;
+    padding: 1em;
+    border: 1px solid #333;
+}
+
+
+
+ .img-size img {
+     width: 450px;
+     height: 150px;
+
+ }
+.button2 {
+    padding: 5px;
+    background: #FFFF;
+    border: 0;
+}
+.body {
+    border: 10px;
+    border-style: solid;
+    background: #FFFF;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.alfred {
+    padding-left: 850px;
+    position: absolute;
+}
+
+body {
+    background-image: url("https://i.postimg.cc/FscmwHst/background.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+
+

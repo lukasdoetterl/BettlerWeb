@@ -50,7 +50,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     for (i <- 0 to s.size - 1)
       Card(s(i)) match {
         case Success(c) => l = l + c
-        case Failure(f) => println("fail")
+
+        case Failure(f) =>
       }
     return l
   }
@@ -94,97 +95,62 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.about())
   }
 
+
+
   def playCardBetter(cards: String) = Action {
 
     val l = matchCards(cards)
     controller.doAndNotify(controller.play(_), (Cards(l)))
-
-    val game = controller.game.get
-    val board = playerformatter(game.getBoard().toString)
-
-
-    val player1 = game.getPlayers()(0).toString
-    val player2 = game.getPlayers()(1).toString
-    val p1 = playerformatter(player1)
-    val p2 = playerformatter(player2)
-
-
-    val message = game.getMessage()
-    Ok(views.html.bettergameView(board, p1, p2, message))
+    Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
 
   }
 
   def create_better_game = Action {
     controller.doAndNotify(controller.newGame(_), "pvp")
-
-
-    val game = controller.game.get
-    val board = playerformatter(game.getBoard().toString)
-    val player1 = game.getPlayers()(0).toString
-    val player2 = game.getPlayers()(1).toString
-    val message = game.getMessage()
-    val p1 = playerformatter(player1)
-    val p2 = playerformatter(player2)
-
-
-    Ok(views.html.bettergameView(board, p1, p2, message))
+    Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
 
   }
 
 
   def betterSkip() = Action { implicit request: Request[AnyContent] =>
     controller.doAndNotify(controller.skip)
-    val game = controller.game.get
-    val board = playerformatter(game.getBoard().toString)
-
-    val player1 = game.getPlayers()(0).toString
-    val player2 = game.getPlayers()(1).toString
-    val p1 = playerformatter(player1)
-    val p2 = playerformatter(player2)
-    val message = game.getMessage()
-    Ok(views.html.bettergameView(board, p1, p2, message))
+    Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
   }
 
 
   def betterundo() = Action { implicit request: Request[AnyContent] =>
     controller.undo
-    val game = controller.game.get
-    val board = playerformatter(game.getBoard().toString)
-
-    val player1 = game.getPlayers()(0).toString
-    val player2 = game.getPlayers()(1).toString
-    val p1 = playerformatter(player1)
-    val p2 = playerformatter(player2)
-    val message = game.getMessage()
-    Ok(views.html.bettergameView(board, p1, p2, message))
+    Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
 
   }
 
   def betterredo() = Action { implicit request: Request[AnyContent] =>
     controller.redo
-    val game = controller.game.get
-    val board = playerformatter(game.getBoard().toString)
-
-    val player1 = game.getPlayers()(0).toString
-    val player2 = game.getPlayers()(1).toString
-    val p1 = playerformatter(player1)
-    val p2 = playerformatter(player2)
-    val message = game.getMessage()
-    Ok(views.html.bettergameView(board, p1, p2, message))
+    Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
   }
 
   def nextRound() = Action { implicit request: Request[AnyContent] =>
     controller.doAndNotify(controller.nextRound)
-    val game = controller.game.get
-    val board = playerformatter(game.getBoard().toString)
-
-    val player1 = game.getPlayers()(0).toString
-    val player2 = game.getPlayers()(1).toString
-    val p1 = playerformatter(player1)
-    val p2 = playerformatter(player2)
-    val message = game.getMessage()
-    Ok(views.html.bettergameView(board, p1, p2, message))
+    Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
   }
+
+  def betterGameDataCreator(game: Game): betterGameData = {
+
+    var currentPlayer = 0
+    if (GameStateContext.state.isInstanceOf[PlayerTurnState])
+      currentPlayer = GameStateContext.state.asInstanceOf[PlayerTurnState].currentPlayer + 1
+
+    val gameData = betterGameData(playerformatter(
+      game.getBoard().toString),
+      playerformatter(game.getPlayers()(0).toString),
+      playerformatter(game.getPlayers()(1).toString),
+      game.getMessage(),
+      (currentPlayer).toString
+    )
+    return gameData
+  }
+
+
 
 
   def playerformatter(cards: String): String = {
@@ -213,3 +179,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   }
 }
+
+
+case class betterGameData(board: String, player1: String,player2: String,message: String,currentTurn:String)
