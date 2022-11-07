@@ -73,6 +73,12 @@ body{
     -o-background-size: cover;
     background-size: cover;
 }
+.test{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: 10px;
+}
 button{
     display: inline-block;
     width: 100px;
