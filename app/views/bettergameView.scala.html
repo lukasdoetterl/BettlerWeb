@@ -43,7 +43,7 @@
                                 <div class = "hand_1">
                                 @if(gameData.player1 != ""){
                                         @for(button1 <- gameData.player1.split(" ")) {
-                                                <input type="image" id="@button1" img src="@routes.Assets.versioned("images/"+button1 +".png")"onclick="addCard('@button1','@gameData.currentTurn',1)"draggable="false"  alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                                <input type="image"  id="@button1" img src="@routes.Assets.versioned("images/"+button1 +".png")"onclick="addCard('@button1','@gameData.currentTurn',1)"draggable="false"  alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                         }
                                 }
 
@@ -51,7 +51,7 @@
                                 <div class = "board_pics">
                                 @if(!gameData.board.equals("")){
                                         @for(board <- gameData.board.split(" ")) {
-                                                <input type="image" draggable="false"  img src="@routes.Assets.versioned("images/"+board +".png")" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                                <input type="image" class="card" draggable="false"  img src="@routes.Assets.versioned("images/"+board +".png")" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                         }
                                 }
 
@@ -61,7 +61,7 @@
                                 <div class = "hand_2">
                                 @if(gameData.player2 != ""){
                                 @for(button2 <- gameData.player2.split(" ")) {
-                                        <input type="image" id="@button2" img src="@routes.Assets.versioned("images/"+button2 +".png")" draggable="false" onclick="addCard('@button2','@gameData.currentTurn',2)" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                        <input type="image"  id="@button2" img src="@routes.Assets.versioned("images/"+button2 +".png")" draggable="false" onclick="addCard('@button2','@gameData.currentTurn',2)" alt="size" height="150px" width="100px"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
                                 }
                                 }
