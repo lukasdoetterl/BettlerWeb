@@ -18,6 +18,8 @@ GET     /undo                           controllers.HomeController.undo()
 GET     /redo                           controllers.HomeController.redo()
 GET     /about                          controllers.HomeController.about()
 
+
+
 #betterVersion
 GET     /b                              controllers.HomeController.create_better_game()
 GET     /playCardBetter/:cards          controllers.HomeController.playCardBetter(cards:String)

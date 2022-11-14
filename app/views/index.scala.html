@@ -3,24 +3,99 @@
 @main("Bettler") {
 
   <head>
+
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/index.css")">
+
   </head>
 
   <body>
-    <div class = "body">
-      <div align ="center">
-        <h1>Welcome to Bettler</h1>
-        <img src="https://i.postimg.cc/fbFZdnqf/Bettler-round-Banner.png">
-        <div class="button_main">
-        <p><form action="@routes.HomeController.create_better_game()"><button class="img-size,button2"><img src="https://i.postimg.cc/xdkZDrsh/Start.png"></button></form></p>
-        <p><form action="@routes.HomeController.about()"><button class="img-size,button2"><img src="https://i.postimg.cc/2jqSc3F7/About.png"></button></form></p>
+
+    <div class="container-fluid">
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="card" >
+              <img class="card-img-top" src=@routes.Assets.versioned("images/playingcards.png") alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Start!</h5>
+                <p class="card-text">Go here to Start a PvP (Player versus Player) Game of Bettler where two People play against each other </p>
+                <a href="/b" class="btn btn-outline-info">Go</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-sm">
+            <div class="card" >
+              <img class="card-img-top" src=@routes.Assets.versioned("images/rules.png") alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Rules ?</h5>
+                <p class="card-text">If you are unsure about The Rules of the Game u can go here to check them out before u start Playing</p>
+                <a href="/about" class="btn btn-outline-info">Unsure?</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card">
+              <img class="card-img-top" src=@routes.Assets.versioned("images/info.png") alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Infos</h5>
+                <p class="card-text">Some Information about The Project / also u can find some Links here</p>
+                <a href="#" class="btn btn-outline-info">Learn Something</a>
+              </div>
+          </div>
+
+
         </div>
-          <div class="alfred">
-          <img src="https://i.postimg.cc/RZHRc2RL/alfred-alfred-spin.gif">
-        </div>
-        <p><form action="@routes.HomeController.create_better_game()"><button class="img-size,button2"><img src="https://i.postimg.cc/5tjh4QtP/links.png"></button></form></p>
-      </div>
+
+
     </div>
+        <div class="row">
+
+
+          <div class="col-sm">
+        <div class="card">
+          <img class="card-img-top" src=@routes.Assets.versioned("images/banner.png") alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Buy</h5>
+            <p class="card-text">An easy Method to place an ad In a Highly visible Place and get a good User-flow to you Site !</p>
+
+            <a href="#" class="btn btn-outline-success">Go somewhere</a>
+          </div>
+        </div>
+          </div>
+          <div class="col-sm">
+            <div class="card">
+              <img class="card-img-top" src=@routes.Assets.versioned("images/banner.png") alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Buy</h5>
+                <p class="card-text">An easy Method to place an ad In a Highly visible Place and get a good User-flow to you Site !</p>
+
+                <a href="#" class="btn btn-outline-success">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="card">
+              <img class="card-img-top" src=@routes.Assets.versioned("images/banner.png") alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Buy</h5>
+                <p class="card-text">An easy Method to place an ad In a Highly visible Place and get a good User-flow to you Site !</p>
+
+                <a href="#" class="btn btn-outline-success">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    </div>
+
+
+
   </body>
 
 }

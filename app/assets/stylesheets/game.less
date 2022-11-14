@@ -1,110 +1,77 @@
-@allignment: center;
-@paddingforCards: 10px;
-@cardHeight : 150px;
-@cardWidth : 100px;
+@size_large: 1600px;
+@size_medium: 1200px;
+@size_small: 640px;
 
-
-.player_1 {
-  text-align: @allignment;
-
-}
-.player_2 {
-  text-align: @allignment;
-}
-.board {
-  text-align: @allignment;
-}
-.turn{
-  text-align: @allignment;
-}
-
-
-.output {
-  position: absolute;
-  width: 3.5em;
-  height: 2em;
-  right: 50em;
-  text-align: center;
-  font-size: 15px;
-
-  color: white;
-  background-image: linear-gradient(royalblue,royalblue);
-  border-radius: 1em;
-  padding:1em 0.5em;
-  display: inline-block;
-}
-.start{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-}
-
-.game_buttons{
-  display:flex;
-  flex-direction:row;
+.img-fluid{
+  height:10%;
+  width: 10%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  draggable: false;
 
 }
+
+
+
+.img-fluid2{
+  height: 70%;
+  width: 30%;
+  margin-bottom: 1%;
+
+}
+.inliner{
+  display : inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.ad1,.ad2,.ad3{
+  margin-right: 2%;
+}
+
 .card{
-  width: @cardWidth;
-  height: @cardHeight;
+  width: 18rem;
+}
+.spacingright{
+  margin-right: 1%;
+}
+.spacingleft{
+  margin-left: 2%;
+}
+.spacingtop{
+  margin-top: 1%;
+}
+.allAD{
+  margin-left: 1%;
+  margin-right: 2%;
+}
+@media (max-width: @size_small)
+{
+  .allAD
+  {
+    display: none;
+  }
+}
+@media (max-width: @size_medium)
+{
+  .ad2
+  {
+    display: none;
+  }
+  .ad3
+  {
+    display: none;
+  }
+}
+@media (max-width: @size_large)
+{
 
+  .ad3
+  {
+    display: none;
+  }
 }
-.hand_1{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  padding: @paddingforCards;
 
-}
-.hand_2{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  padding: @paddingforCards;
-
-}
-.board_pics{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  padding: 10px;
-}
-.body{
-  border: 10px;
-  border-style: solid;
-  background: #FFFF;
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-}
-body{
-  background-image: url("https://i.postimg.cc/FscmwHst/background.png");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.test{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  padding: 10px;
-}
-button{
-  display: inline-block;
-  width: 100px;
-  height: 60px;
-  line-height: 30px;
-  background-image: linear-gradient(160deg, white,red 10%, royalblue );
-  margin: 0 4px;
-  border-radius: 1em;
-  text-align: center;
-}
-#ziel {
-  width: 20em;
-  height: 6em;
-  padding: 1em;
-  border: 1px solid #333;
-}
 
 

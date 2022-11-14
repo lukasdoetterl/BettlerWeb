@@ -1,0 +1,101 @@
+@allignment: center;
+@paddingforCards: 1em;
+@cardHeight : 1em;
+@cardWidth : 1em;
+
+
+.player_1 {
+    text-align: @allignment;
+
+}
+.player_2 {
+    text-align: @allignment;
+}
+.board {
+    text-align: @allignment;
+}
+.turn{
+    text-align: @allignment;
+}
+
+
+.output {
+    position: absolute;
+    width: 3.5em;
+    height: 2em;
+    right: 50em;
+    text-align: center;
+    font-size: 15px;
+
+    color: white;
+    background-image: linear-gradient(royalblue,royalblue);
+    border-radius: 1em;
+    padding:1em 0.5em;
+    display: inline-block;
+}
+.start{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.game_buttons{
+    display:flex;
+    flex-direction:row;
+
+}
+.card{
+    width: @cardWidth;
+    height: @cardHeight;
+
+}
+.hand_1{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: @paddingforCards;
+
+}
+.hand_2{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: @paddingforCards;
+
+}
+.board_pics{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: 10px;
+}
+
+body{
+    background-image: url("https://i.postimg.cc/FscmwHst/background.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.test{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding: 10px;
+}
+button{
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+    line-height: 30px;
+    background-image: linear-gradient(160deg, white,red 10%, royalblue );
+    margin: 0 4px;
+    border-radius: 1em;
+    text-align: center;
+}
+#ziel {
+    width: 20em;
+    height: 6em;
+    padding: 1em;
+    border: 1px solid #333;
+}

@@ -1,0 +1,28 @@
+@minwidth : 601px;
+@maxwidth : 600px;
+.logo {
+  max-width: 20%;
+  height: auto;
+  }
+
+.logo_text{
+  font-size: 1em;
+  font-family: 'Lobster', cursive;
+  }
+@media screen and (min-width: @minwidth  ) {
+  body{
+    font-size: 80px ;
+  }
+
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: @maxwidth ) {
+  div.example {
+    font-size: 30px; ;
+  }
+}
+
+
+
+
