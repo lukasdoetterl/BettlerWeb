@@ -1,29 +1,18 @@
 package controllers
 
-import javax.inject._
-import play.api._
-import play.api.mvc._
-import de.htwg.se.bettler.starter
-import de.htwg.se.bettler.model.cardComponent.{CardInterface, CardsInterface}
-import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
-import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Cards
-import de.htwg.se.bettler.model.cardComponent._
-import de.htwg.se.bettler.model.cardComponent.cardBaseImpl._
-import de.htwg.se.bettler.controller.controllerBaseImp
-import de.htwg.se.bettler.model.Field._
-import de.htwg.se.bettler.model.{cardComponent, gameComponent}
+import de.htwg.se.bettler.model.cardComponent.CardInterface
+import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.{Card, Cards}
 import de.htwg.se.bettler.model.gameComponent.Game
-import de.htwg.se.bettler.model.gameComponent.pvpGameImpl.PvPGame
 import de.htwg.se.bettler.model.stateComponent.GameStateContext
 import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.PlayerTurnState
-import play.libs.Scala
+import de.htwg.se.bettler.starter
+import play.api.mvc._
 
-import scala.reflect.io.File
-import scala.util.{Failure, Success, Try}
+import javax.inject._
+import scala.util.{Failure, Success}
 
 
-
-
+import java.io.{File, PrintWriter}
 
 
 /**
@@ -43,6 +32,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   val controller = new starter().controller_return
 
+  def retJson(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+    val json = controller.return_j
+    Ok(json)
+  }
 
   def matchCards(cardinput: String): Set[CardInterface] = {
     val s = cardinput.split(" ")
@@ -55,6 +48,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       }
     return l
   }
+
 
 
 
@@ -95,6 +89,43 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.about())
   }
 
+  //____________________________ 2playerVersion ____________________________
+  def playerview() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.playerView(controller.return_j))
+  }
+
+  def create2P = Action {
+    controller.doAndNotify(controller.newGame(_), "pvp")
+    Ok(views.html.playerView(controller.return_j))
+
+  }
+
+  def newGame2P = Action {
+    controller.doAndNotify(controller.newGame(_), "pvp")
+    Ok(views.html.playerView(controller.return_j))
+
+  }
+
+
+  def playCard2P(cards: String) = Action { implicit request: Request[AnyContent] =>
+    val l = matchCards(cards)
+    controller.doAndNotify(controller.play(_), (Cards(l)))
+    Ok(views.html.playerView(controller.return_j))
+
+  }
+
+  def Skip2P() = Action { implicit request: Request[AnyContent] =>
+    controller.doAndNotify(controller.skip)
+    Ok(views.html.playerView(controller.return_j))
+  }
+
+
+
+
+
+
+  //____________________________ 2playerVersion_END ____________________________
+
 
 
   def playCardBetter(cards: String) = Action {
@@ -133,6 +164,9 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     controller.doAndNotify(controller.nextRound)
     Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
   }
+
+
+
 
   def betterGameDataCreator(game: Game): betterGameData = {
 
@@ -178,6 +212,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
 
   }
+
+
 }
 
 

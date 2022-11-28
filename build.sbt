@@ -16,6 +16,5 @@ lazy val root = (project in file("."))
       guice,
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
 
-
     )
   )

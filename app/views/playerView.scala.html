@@ -1,0 +1,111 @@
+
+@(gameData: String)
+
+<head>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/playerView.css")">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src=@routes.Assets.versioned("javascripts/playerview.js") type="text/javascript"></script>
+
+</head>
+
+@main("Bettler"){
+
+
+<body>
+
+
+<!-- <button type="button" class="btn btn-outline-success" onclick="createJson()" ></button>
+        <button type="button" class="btn btn-outline-success" onclick="loadJson()" >reload</button>
+        <div class="test" id="tester"> </div> -->
+<div class="container-fluid, spacingleft">
+        <!-- main container -->
+        <!-- Display the Game Message with primary alert-->
+
+        <div class="container, spacingtop">
+                <div class="row">
+                        <div class="col">
+
+                        </div>
+                        <div class="col">
+
+                        </div>
+                        <div class="col">
+
+                        </div>
+                </div>
+
+
+                <!-- Main Button Control Group-->
+
+        <br>
+        <div class="row">
+        <div class="col">
+        <div class="row">
+                        <div class="col">
+                                <div class="alert alert-info alert-dismissible fade show"  role="alert">
+                                        <strong>Message :</strong> <p id="messageDisplay" ></p>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                        </div>
+        </div>
+
+        <button id= "currentPlayerButton" type="button" class="btn btn-primary">
+                Current Player: <span class="badge badge-info"></span>
+                <span class="sr-only"></span>
+        </button>
+
+        <button type="button" class="btn btn-outline-warning" onclick="startGame()" data-bs-toggle="tooltip" data-bs-placement="top" title="Starts a Complete new Game(for match use next Round)">Start new Game</button>
+        <button type="button" class="btn btn-outline-danger" onclick="backToLobby()"data-bs-toggle="tooltip" data-bs-placement="top" title="Exit the Game(no save)">Exit</button>
+
+        <br> <br> <br>
+
+
+         <!-- Player 1 -->
+                <div class="test" id = "endplayer1"> </div> <br>
+        <!-- Board -->
+                <div class="test"  id = "endboard"> </div> <br>
+
+        <!-- Player 2 -->
+                <div class="test"  id = "endplayer2"> </div><br>
+
+
+        <br>
+        <!-- Gameplay Buttons-->
+        <button type="button" class="btn btn-outline-success" onclick="playSelectedCards()"data-bs-toggle="tooltip" data-bs-placement="top" title="Play the Cards you have selected">Play Cards</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="skip()"data-bs-toggle="tooltip" data-bs-placement="top" title="Skip your current turn if you dont want to or cant play">Skip</button>
+
+
+        <br>
+
+        </div>
+
+
+
+        </div>
+        </div>
+
+
+        </div>
+</div>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+

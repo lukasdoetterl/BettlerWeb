@@ -28,10 +28,30 @@ GET     /betterundo                     controllers.HomeController.betterundo()
 GET     /betterredo                     controllers.HomeController.betterredo()
 GET     /nextround                      controllers.HomeController.nextRound()
 
+#2playerVersion
+
+POST    /playCard2P/:cards         controllers.HomeController.playCard2P(cards:String)
++noscrf
+POST     /2Pskip                   controllers.HomeController.Skip2P()
++noscrf
+POST /2PnewGame                   controllers.HomeController.newGame2P()
+GET    /playerview               controllers.HomeController.create2P()
+
+
+
+GET    /game/json                  controllers.HomeController.retJson()
+
+
+
+
+
 #Picture Path
 GET     /cardpictures/*file               controllers.Assets.at(path="/public/", file)
 
-POST    /playCards/:card                      controllers.HomeController.playCardBetter(card:String)
+#test
+
+
+
 
 
 

@@ -2,13 +2,11 @@ let selectedCards = "";          // Currently selected Cards
 let currentRotation = 0;
 let rotationangle = 5;// Current Rotation of the Board
 
-
-
-
 $(document).ready(function(){
     $('.displayedCard').bind('mousewheel', function(e){
         if(e.originalEvent.wheelDelta /120 > 0) {
                     $(this).css('filter', 'invert(100%)');
+
         }
         else{
             $(this).css('filter', 'invert(0%)');
@@ -17,7 +15,7 @@ $(document).ready(function(){
     });
 });
 
-//keylistener if the h key is pressed
+//keylistener if the r key is pressed
 $(document).ready(function(){
     $(document).keydown(function(e){
         if(e.keyCode == 82){
