@@ -6,11 +6,6 @@ let rotationangle = 5;// Current Rotation of the Board
 //keylistener if the r key is pressed
 
 
-
-
-
-
-
 async function playSelectedCards(player) {
     if ((selectedCards != "")) {
         const req = "/playCard2P/" + selectedCards;
@@ -78,7 +73,8 @@ async function createCards(json) {
         let value = json.player1.karten[i].value;
 
         let cCard = createSingleCard(symbol,value,turn,1);
-        originalDiv = document.getElementById("endplayer1");
+        originalDiv = $('#endplayer1')[0];
+
         originalDiv.parentNode.insertBefore(cCard, originalDiv);
 
 
@@ -88,7 +84,9 @@ async function createCards(json) {
             let symbol = json.board.karten[i].symbol;
             let value = json.board.karten[i].value;
             let cCard = createSingleCard(symbol,value,turn,1);
-            originalDiv = document.getElementById("endboard");
+            originalDiv = $('#endboard')[0];
+
+
             originalDiv.parentNode.insertBefore(cCard, originalDiv);
         }
     }
@@ -98,10 +96,11 @@ async function createCards(json) {
         let value = json.player2.karten[i].value;
 
         let cCard = createSingleCard(symbol,value,turn,2);
-        originalDiv = document.getElementById("endplayer2");
+        originalDiv = $('#endplayer2')[0];
         originalDiv.parentNode.insertBefore(cCard, originalDiv);
     }
-    document.getElementById("currentPlayerButton").textContent = turn;
+
+    $('#currentPlayerButton')[0].textContent = turn;;
 
 
 
@@ -109,7 +108,7 @@ async function createCards(json) {
     boardCards = json.board.karten
 
     let message = json.message
-    document.getElementById("messageDisplay").textContent = message;
+    $('#messageDisplay')[0].textContent = message;
 
 }
 
