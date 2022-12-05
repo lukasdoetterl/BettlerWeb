@@ -1,0 +1,56 @@
+{
+  "turn" : 1,
+  "maxplayer" : 2,
+  "player1" : {
+    "anzahl" : 5,
+    "karten" : [ {
+      "symbol" : "S",
+      "value" : "J"
+    }, {
+      "symbol" : "D",
+      "value" : "K"
+    }, {
+      "symbol" : "C",
+      "value" : "9"
+    }, {
+      "symbol" : "H",
+      "value" : "A"
+    }, {
+      "symbol" : "C",
+      "value" : "7"
+    } ]
+  },
+  "player2" : {
+    "anzahl" : 7,
+    "karten" : [ {
+      "symbol" : "C",
+      "value" : "J"
+    }, {
+      "symbol" : "D",
+      "value" : "10"
+    }, {
+      "symbol" : "S",
+      "value" : "7"
+    }, {
+      "symbol" : "D",
+      "value" : "8"
+    }, {
+      "symbol" : "S",
+      "value" : "K"
+    }, {
+      "symbol" : "C",
+      "value" : "K"
+    }, {
+      "symbol" : "S",
+      "value" : "10"
+    } ]
+  },
+  "board" : {
+    "anzahl" : 1,
+    "karten" : [ {
+      "symbol" : "C",
+      "value" : "8"
+    } ]
+  },
+  "message" : "Player 2 turn."
+}

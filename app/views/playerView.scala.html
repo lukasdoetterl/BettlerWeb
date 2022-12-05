@@ -1,5 +1,5 @@
 
-@(gameData: String)
+@(gameData: String, currentPlayer:Int)
 
 <head>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/playerView.css")">
@@ -14,8 +14,9 @@
 <body>
 
 
-<!-- <button type="button" class="btn btn-outline-success" onclick="createJson()" ></button>
-        <button type="button" class="btn btn-outline-success" onclick="loadJson()" >reload</button>
+<button id="selectedPlayer" style="display:none" onclick="">@currentPlayer</button>
+<!--<button type="button" class="btn btn-outline-success" onclick="createJson()" >@currentPlayer</button> -->
+ <!--       <button type="button" class="btn btn-outline-success" onclick="loadJson()" >reload</button>
         <div class="test" id="tester"> </div> -->
 <div class="container-fluid, spacingleft">
         <!-- main container -->
@@ -73,9 +74,9 @@
 
         <br>
         <!-- Gameplay Buttons-->
-        <button type="button" class="btn btn-outline-success" onclick="playSelectedCards()"data-bs-toggle="tooltip" data-bs-placement="top" title="Play the Cards you have selected">Play Cards</button>
-        <button type="button" class="btn btn-outline-secondary" onclick="skip()"data-bs-toggle="tooltip" data-bs-placement="top" title="Skip your current turn if you dont want to or cant play">Skip</button>
-
+        <button type="button" class="btn btn-outline-success" onclick="playSelectedCards(@currentPlayer)"data-bs-toggle="tooltip" data-bs-placement="top" title="Play the Cards you have selected">Play Cards</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="skip(@currentPlayer)"data-bs-toggle="tooltip" data-bs-placement="top" title="Skip your current turn if you dont want to or cant play">Skip</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="nextRound()"data-bs-toggle="tooltip" data-bs-placement="top" title="play the next Round(after someone has won)">Next Round</button>
 
         <br>
 

@@ -10,9 +10,16 @@ import play.api.mvc._
 
 import javax.inject._
 import scala.util.{Failure, Success}
+import play.api.libs.streams.ActorFlow
+import akka.actor._
+import akka.stream.Materializer
+import play.api.Play.materializer
+import play.api.libs.streams.ActorFlow
+import akka.actor.ActorSystem
+import akka.stream.Materializer
+import akka.actor._
 
-
-import java.io.{File, PrintWriter}
+import scala.swing.Reactor
 
 
 /**
@@ -20,7 +27,7 @@ import java.io.{File, PrintWriter}
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class HomeController @Inject()(val controllerComponents: ControllerComponents)(implicit system: ActorSystem, mat: Materializer) extends BaseController {
 
   /**
    * Create an Action to render an HTML page.
@@ -31,6 +38,13 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    */
 
   val controller = new starter().controller_return
+  private var clientList: List[ActorRef] = List()
+
+  //Websockets for 2Player Version
+
+
+
+  //websockets End
 
   def retJson(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     val json = controller.return_j
@@ -90,34 +104,44 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
   //____________________________ 2playerVersion ____________________________
-  def playerview() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.playerView(controller.return_j))
+  def playerview(cPlayer:Int) = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.playerView(controller.return_j,cPlayer))
   }
 
-  def create2P = Action {
+  def playerviewX() = Action { implicit request: Request[AnyContent] =>
     controller.doAndNotify(controller.newGame(_), "pvp")
-    Ok(views.html.playerView(controller.return_j))
+    Ok(views.html.playerView(controller.return_j, 1))
+  }
+
+  def create2P(cPlayer:Int) = Action {
+    controller.doAndNotify(controller.newGame(_), "pvp")
+    Ok(views.html.playerView(controller.return_j,cPlayer))
 
   }
 
-  def newGame2P = Action {
+  def newGame2P() = Action {
     controller.doAndNotify(controller.newGame(_), "pvp")
-    Ok(views.html.playerView(controller.return_j))
-
+    Ok(controller.return_j)
   }
 
 
   def playCard2P(cards: String) = Action { implicit request: Request[AnyContent] =>
     val l = matchCards(cards)
     controller.doAndNotify(controller.play(_), (Cards(l)))
-    Ok(views.html.playerView(controller.return_j))
+    Ok(controller.return_j)
 
   }
 
   def Skip2P() = Action { implicit request: Request[AnyContent] =>
     controller.doAndNotify(controller.skip)
-    Ok(views.html.playerView(controller.return_j))
+    Ok((controller.return_j))
   }
+
+  def nextRound2P() = Action { implicit request: Request[AnyContent] =>
+    controller.doAndNotify(controller.nextRound)
+    Ok((controller.return_j))
+  }
+
 
 
 
@@ -211,6 +235,27 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     return p
 
 
+  }
+
+  def socket: WebSocket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      println("Connection received")
+      BettlerWebSocketActorFactory.create(out)
+    }
+  }
+
+  class BettlerWebSocketActor(out: ActorRef) extends Actor {
+    clientList = out :: clientList
+    def receive: Receive = {
+      case _ => clientList.foreach(_ !controller.return_j)
+    }
+
+  }
+
+  object BettlerWebSocketActorFactory {
+    def create(out: ActorRef): Props = {
+      Props(new BettlerWebSocketActor(out))
+    }
   }
 
 

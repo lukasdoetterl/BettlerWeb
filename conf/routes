@@ -30,16 +30,17 @@ GET     /nextround                      controllers.HomeController.nextRound()
 
 #2playerVersion
 
-POST    /playCard2P/:cards         controllers.HomeController.playCard2P(cards:String)
+POST    /playCard2P/:cards                   controllers.HomeController.playCard2P(cards:String)
 +noscrf
-POST     /2Pskip                   controllers.HomeController.Skip2P()
+POST     /2Pskip                  controllers.HomeController.Skip2P()
 +noscrf
-POST /2PnewGame                   controllers.HomeController.newGame2P()
-GET    /playerview               controllers.HomeController.create2P()
-
-
-
-GET    /game/json                  controllers.HomeController.retJson()
+POST   /2PnewGame                       controllers.HomeController.newGame2P()
+POST   /nextround2P                      controllers.HomeController.nextRound2P()
+GET    /playerview/:cPlayer                  controllers.HomeController.playerview(cPlayer:Int)
+GET    /playerviewX                            controllers.HomeController.playerviewX()
+GET    /Startplayerview/:cPlayer             controllers.HomeController.create2P(cPlayer:Int)
+GET   /game/json                            controllers.HomeController.retJson()
+GET    /websocket                            controllers.HomeController.socket
 
 
 
