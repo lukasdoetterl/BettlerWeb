@@ -7,7 +7,6 @@ let socket;
 //keylistener if the r key is pressed
 
 
-
 window.onload = () => {
     loadJson()
     webSocketInit();
@@ -19,7 +18,7 @@ function webSocketInit() {
     socket.onclose = () => console.log("Connection closed");
     socket.onerror = () => console.log("Connection error");
     socket.onmessage = function (event) {
-        console.log(JSON.parse(event.data));
+        //console.log(JSON.parse(event.data));
         createCards(JSON.parse(event.data)).then(r => console.log("Created Cards from Msg"));
     }
 
@@ -27,9 +26,9 @@ function webSocketInit() {
 
 async function playSelectedCards() {
 
-        if ((selectedCards !== "")) {
-            const req = "/playCard2P/"  + selectedCards;
-            await getJSON(req);
+    if ((selectedCards !== "")) {
+        const req = "/playCard2P/" + selectedCards;
+        await getJSON(req);
 
         selectedCards = "";
     }
@@ -67,23 +66,26 @@ async function getJSON(url) {
         console.log("page failed loading");
     }
 }
+
 //------------------JSON------------------//
 
 
-    function createSingleCard(symbol,value,turn,player){
-        let card = symbol + value;
-        const newDiv = document.createElement("input");
-        newDiv.setAttribute("type", "image");
-        newDiv.setAttribute("class", "playingBoard player1 img-fluid displayedCard spacingright");
-        //set im src attribure
+function createSingleCard(symbol, value, turn, player) {
+    let card = symbol + value;
+    const newDiv = document.createElement("input");
+    newDiv.setAttribute("type", "image");
+    newDiv.setAttribute("class", "playingBoard player1 img-fluid displayedCard spacingright");
+    //set im src attribure
 
-        newDiv.setAttribute("src", "/assets/images2/"+ card +".png");
-        newDiv.setAttribute("id", card);
-        newDiv.setAttribute("onclick", "addCard("+card+", "+turn+", "+player+")");
-        newDiv.onclick = function() {addCard(card,turn,player);};
-        return newDiv;
+    newDiv.setAttribute("src", "/assets/images2/" + card + ".png");
+    newDiv.setAttribute("id", card);
+    newDiv.setAttribute("onclick", "addCard(" + card + ", " + turn + ", " + player + ")");
+    newDiv.onclick = function () {
+        addCard(card, turn, player);
+    };
+    return newDiv;
 
-    }
+}
 
 async function createCards(json) {
     let selectedPlayer = $('#selectedPlayer')[0].textContent
@@ -97,21 +99,20 @@ async function createCards(json) {
             let symbol = json.player1.karten[i].symbol;
             let value = json.player1.karten[i].value;
 
-            let cCard = createSingleCard(symbol,value,turn,1);
+            let cCard = createSingleCard(symbol, value, turn, 1);
             originalDiv = $('#endplayer1')[0];
 
             originalDiv.parentNode.insertBefore(cCard, originalDiv);
 
 
         }
-    }
-    else {
+    } else {
         if (json.player2.anzahl != 0 && selectedPlayer == 2) {
-            for (let i in json.player2.karten ) {
+            for (let i in json.player2.karten) {
                 let symbol = json.player2.karten[i].symbol;
                 let value = json.player2.karten[i].value;
 
-                let cCard = createSingleCard(symbol,value,turn,2);
+                let cCard = createSingleCard(symbol, value, turn, 2);
                 originalDiv = $('#endplayer1')[0];
                 originalDiv.parentNode.insertBefore(cCard, originalDiv);
             }
@@ -119,11 +120,11 @@ async function createCards(json) {
 
     }
 
-    if (!(json.board.anzahl == 0)){
+    if (!(json.board.anzahl == 0)) {
         for (let i in json.board.karten) {
             let symbol = json.board.karten[i].symbol;
             let value = json.board.karten[i].value;
-            let cCard = createSingleCard(symbol,value,turn,1);
+            let cCard = createSingleCard(symbol, value, turn, 1);
             originalDiv = $('#endboard')[0];
 
 
@@ -132,9 +133,7 @@ async function createCards(json) {
     }
 
 
-
     $('#currentPlayerButton')[0].textContent = turn;
-
 
 
     player2Cards = json.player2.karten
@@ -152,30 +151,31 @@ function backToLobby() {
 async function skip(player) {
     let asker = $('#currentPlayerButton')[0].textContent = turn;
     let selectedPlayer = $('#selectedPlayer')[0].textContent
-    if (asker == selectedPlayer){
+    if (asker == selectedPlayer) {
         const req = "/2Pskip";
         await getJSON(req);
     }
 
 }
-async function nextRound(){
-        const req = "/nextround2P";
-        await getJSON(req);
+
+async function nextRound() {
+    const req = "/nextround2P";
+    await getJSON(req);
 
 
 }
- function addCard(card,currentTurn,asker){
-        console.log(selectedCards);
-    if (currentTurn == asker){
-        if (!selectedCards.includes(card)){
+
+function addCard(card, currentTurn, asker) {
+    console.log(selectedCards);
+    if (currentTurn == asker) {
+        if (!selectedCards.includes(card)) {
             selectedCards = selectedCards + " " + card
 
-            document.getElementById(card).style.border='5px solid #FF0000';
+            document.getElementById(card).style.border = '5px solid #FF0000';
 
-        }
-        else {
+        } else {
             selectedCards = selectedCards.replace(card, "")
-            if(selectedCards[0].includes(" ")){
+            if (selectedCards[0].includes(" ")) {
                 selectedCards = selectedCards.replace(" ", "")
             }
 
@@ -188,12 +188,12 @@ async function nextRound(){
     }
 
 
+}
+
+function test() {
 
 }
 
-function test(){
-
-}
 async function startGame() {
     const req = "/2PnewGame";
     await getJSON(req);

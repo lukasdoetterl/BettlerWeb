@@ -18,6 +18,7 @@ import play.api.libs.streams.ActorFlow
 import akka.actor.ActorSystem
 import akka.stream.Materializer
 import akka.actor._
+import play.api.libs.json.Json
 
 import scala.swing.Reactor
 
@@ -143,11 +144,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
   }
 
 
-
-
-
-
-
   //____________________________ 2playerVersion_END ____________________________
 
 
@@ -189,6 +185,9 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
     Ok(views.html.bettergameView(betterGameDataCreator(controller.game.get)))
   }
 
+  // chat Implementation
+
+  var currentChat: String = "HAllo :"
 
 
 
@@ -236,7 +235,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
 
 
   }
-
+//Web socket START
   def socket: WebSocket = WebSocket.accept[String, String] { request =>
     ActorFlow.actorRef { out =>
       println("Connection received")
@@ -257,6 +256,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
       Props(new BettlerWebSocketActor(out))
     }
   }
+
+  //Web socket END
 
 
 }

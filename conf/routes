@@ -46,6 +46,7 @@ GET    /websocket                            controllers.HomeController.socket
 
 
 
+
 #Picture Path
 GET     /cardpictures/*file               controllers.Assets.at(path="/public/", file)
 
