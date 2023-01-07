@@ -1,5 +1,6 @@
-$(document).ready(function(){
-    $(".event").dblclick(function(){
-        alert( "Hey you found a secret" );
-    });
-});
+
+import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
+
+
+
+

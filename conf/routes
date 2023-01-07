@@ -40,7 +40,12 @@ GET    /playerview/:cPlayer                  controllers.HomeController.playervi
 GET    /playerviewX                            controllers.HomeController.playerviewX()
 GET    /Startplayerview/:cPlayer             controllers.HomeController.create2P(cPlayer:Int)
 GET   /game/json                            controllers.HomeController.retJson()
+GET  /startVueGame                            controllers.HomeController.startGameVue()
 GET    /websocket                            controllers.HomeController.socket
+
+# test and vue webserver
+
+GET /test controllers.HomeController.retTestMessage()
 
 
 

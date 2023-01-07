@@ -1,6 +1,61 @@
 
 const app = Vue.createApp({})
 
+
+
+
+app.component('nav-bar', {
+    data() {
+
+    }
+    ,
+    template: `
+     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #92A8D1;">
+    <a class="navbar-brand" href="#">
+        <img class= "logo event" src="assets/images2/logo.png">
+        <span class="navbar-text">
+            Bettler
+        </span>
+
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/lobby">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"href="/b"> Start a Game</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"href="/playerviewX" > Player 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"href="/playerview/2" > Player 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"href="/chatview" > Chat</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">Rules</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown link
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Links">
+                    <a class="dropdown-item" href="https://github.com/lukasdoetterl/BettlerWeb">Github</a>
+                    <a class="dropdown-item" href="https://getbootstrap.com/">Bootstrap</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </nav>
+    `
+})
+
 app.component('game_playerview', {
     data() {
         return {
@@ -61,7 +116,7 @@ app.component('game_playerview', {
 },
         async createCards(json) {
             let selectedPlayer = $('#selectedPlayer')[0].textContent
-            turn = json.turn + 1;
+            let turn = json.turn + 1;
             var i = 0
             let x = ""
             document.querySelectorAll('.playingBoard').forEach(e => e.remove());
@@ -72,7 +127,7 @@ app.component('game_playerview', {
                     let value = json.player1.karten[i].value;
 
                     let cCard = this.createSingleCard(symbol, value, turn, 1);
-                    originalDiv = $('#endplayer1')[0];
+                    let originalDiv = $('#endplayer1')[0];
 
                     originalDiv.parentNode.insertBefore(cCard, originalDiv);
 
@@ -85,7 +140,7 @@ app.component('game_playerview', {
                         let value = json.player2.karten[i].value;
 
                         let cCard = this.createSingleCard(symbol, value, turn, 2);
-                        originalDiv = $('#endplayer1')[0];
+                        let originalDiv = $('#endplayer1')[0];
                         originalDiv.parentNode.insertBefore(cCard, originalDiv);
                     }
                 }
@@ -97,7 +152,7 @@ app.component('game_playerview', {
                     let symbol = json.board.karten[i].symbol;
                     let value = json.board.karten[i].value;
                     let cCard = this.createSingleCard(symbol, value, turn, 1);
-                    originalDiv = $('#endboard')[0];
+                    let originalDiv = $('#endboard')[0];
 
 
                     originalDiv.parentNode.insertBefore(cCard, originalDiv);
@@ -108,8 +163,8 @@ app.component('game_playerview', {
             $('#currentPlayerButton')[0].textContent = turn;
 
 
-            player2Cards = json.player2.karten
-            boardCards = json.board.karten
+            let player2Cards = json.player2.karten
+            let boardCards = json.board.karten
 
             let message = json.message
             $('#messageDisplay')[0].textContent = message;
@@ -270,66 +325,14 @@ app.component('game_playerview', {
 
 })
 
-app.component('nav-bar', {
-    data() {
-
-    }
-    ,
-    template: `
-     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #92A8D1;">
-    <a class="navbar-brand" href="#">
-        <img class= "logo event" src="assets/images2/logo.png">
-        <span class="navbar-text">
-            Bettler
-        </span>
-
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/lobby">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"href="/b"> Start a Game</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"href="/playerviewX" > Player 1</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"href="/playerview/2" > Player 2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"href="/chatview" > Chat</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">Rules</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown link
-                </a>
-                <div class="dropdown-menu" aria-labelledby="Links">
-                    <a class="dropdown-item" href="https://github.com/lukasdoetterl/BettlerWeb">Github</a>
-                    <a class="dropdown-item" href="https://getbootstrap.com/">Bootstrap</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-    </nav>
-    `
-})
-
 app.component('index_view', {
+
     data() {
 
     }
     ,
     template: `
         <div class="container-fluid">
-
 
       <div class="container">
         <div class="row">
@@ -378,6 +381,20 @@ app.component('index_view', {
     `
 })
 
+//new app component with the imported date picker
+app.component('date_picker', {
+
+    data() {
+
+    }
+    ,
+    template: `
+        <vaadin-date-picker placeholder="Pick a date">
+        </vaadin-date-picker>
+    `
+
+})
+//
 
 app.mount('#main_container')
 

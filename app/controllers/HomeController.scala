@@ -235,6 +235,17 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
 
 
   }
+
+  //test / webserverVue
+
+  def retTestMessage(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+    Ok("TestSuccessfull")
+  }
+
+  def startGameVue(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+    controller.doAndNotify(controller.newGame(_), "pvp")
+    Ok(controller.return_j)
+  }
 //Web socket START
   def socket: WebSocket = WebSocket.accept[String, String] { request =>
     ActorFlow.actorRef { out =>
